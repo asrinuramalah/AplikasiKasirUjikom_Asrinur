@@ -323,7 +323,6 @@ try {
     }//GEN-LAST:event_btnhapusActionPerformed
 
     private void btnkeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnkeluarActionPerformed
-new MenuUtama().setVisible(true);
 this.dispose();
 
         // TODO add your handling code here:

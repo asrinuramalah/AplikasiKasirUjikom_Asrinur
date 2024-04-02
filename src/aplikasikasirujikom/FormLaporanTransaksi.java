@@ -52,6 +52,7 @@ String Tanggal1,Tanggal2, sql;
         btnCari3 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblDataProduk = new javax.swing.JTable();
+        btnkeluar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -127,6 +128,14 @@ String Tanggal1,Tanggal2, sql;
         ));
         jScrollPane2.setViewportView(tblDataProduk);
 
+        btnkeluar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnkeluar.setText("KELUAR");
+        btnkeluar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnkeluarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -162,10 +171,11 @@ String Tanggal1,Tanggal2, sql;
                         .addGap(243, 243, 243))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnkeluar)
                             .addComponent(btnCari2)
                             .addComponent(btnCari1)
                             .addComponent(btnCari3))
-                        .addGap(32, 32, 32))))
+                        .addGap(22, 22, 22))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,17 +199,20 @@ String Tanggal1,Tanggal2, sql;
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
                                     .addComponent(SetelahTanggal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(sampaitgl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(58, 58, 58)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(sampaitgl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(btnCari1)
-                        .addGap(42, 42, 42)
+                        .addGap(75, 75, 75)
+                        .addComponent(btnCari3))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(btnCari2)
-                        .addGap(38, 38, 38)
-                        .addComponent(btnCari3)))
+                        .addGap(58, 58, 58)))
+                .addGap(21, 21, 21)
+                .addComponent(btnkeluar)
+                .addGap(10, 10, 10)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
@@ -221,7 +234,7 @@ String Tanggal1,Tanggal2, sql;
 try {
     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
     Tanggal1 = format.format(SebelumTanggal.getDate());
-    sql ="select * from penjualan where TanggalPenjualan < '"+Tanggal2+"'";
+    sql ="select * from penjualan where TanggalPenjualan < '"+Tanggal1+"'";
     pst = konek.prepareStatement(sql);
     rst = pst.executeQuery();
     tblLapTransaksi.setModel(DbUtils.resultSetToTableModel(rst));
@@ -235,7 +248,8 @@ try {
     private void btnCari2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCari2ActionPerformed
 try {
     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-    Tanggal1 = format.format(SebelumTanggal.getDate());
+    Tanggal1 = format.format(daritgl.getDate());
+    Tanggal2 = format.format(sampaitgl.getDate());
      sql ="select * from penjualan where TanggalPenjualan between '"+Tanggal1+"' and'"+Tanggal2+"'";
     pst = konek.prepareStatement(sql);
     rst = pst.executeQuery();
@@ -262,8 +276,8 @@ try {
     private void btnCari3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCari3ActionPerformed
 try {
     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-    Tanggal1 = format.format(SebelumTanggal.getDate());
-    sql ="select * from penjualan where TanggalPenjualan > '"+Tanggal1+"'"+Tanggal2+"'";
+    Tanggal1 = format.format(SetelahTanggal.getDate());
+    sql ="select * from penjualan where TanggalPenjualan > '"+Tanggal1+"'";
     pst = konek.prepareStatement(sql);
     rst = pst.executeQuery();
     tblLapTransaksi.setModel(DbUtils.resultSetToTableModel(rst));
@@ -271,6 +285,10 @@ try {
     JOptionPane.showMessageDialog(null, "Data Tidak Tampil");
 }        // TODO add your handling code here:
     }//GEN-LAST:event_btnCari3ActionPerformed
+
+    private void btnkeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnkeluarActionPerformed
+this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_btnkeluarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -313,6 +331,7 @@ try {
     private javax.swing.JButton btnCari1;
     private javax.swing.JButton btnCari2;
     private javax.swing.JButton btnCari3;
+    private javax.swing.JButton btnkeluar;
     private com.toedter.calendar.JDateChooser daritgl;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

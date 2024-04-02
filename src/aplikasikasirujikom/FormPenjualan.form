@@ -378,8 +378,11 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="2" name="C:\Users\User\Downloads\icons8-add-folder-20.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="BARU"/>
+        <Property name="text" type="java.lang.String" value="BATAL"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBaruActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtKembalian">
       <Events>

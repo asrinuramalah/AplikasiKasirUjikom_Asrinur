@@ -337,7 +337,12 @@ ResultSet rst;
 
         btnBaru.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnBaru.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Downloads\\icons8-add-folder-20.png")); // NOI18N
-        btnBaru.setText("BARU");
+        btnBaru.setText("BATAL");
+        btnBaru.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBaruActionPerformed(evt);
+            }
+        });
 
         txtKembalian.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -495,7 +500,6 @@ total();
         txtTotal.setText("");
         txtBayar.setText("");
         txtKembalian.setText("");
-        txtIdPenjualan.setText("");
         cari();        // TODO add your handling code here:
     }//GEN-LAST:event_btnBayarActionPerformed
 
@@ -589,6 +593,10 @@ try {
     private void txtTanggalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTanggalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTanggalActionPerformed
+
+    private void btnBaruActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBaruActionPerformed
+this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBaruActionPerformed
 
     /**
      * @param args the command line arguments

@@ -318,7 +318,7 @@ public class MenuUtama extends javax.swing.JFrame {
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 630, -1, -1));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 650, -1, -1));
 
         Beranda.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Downloads\\icons8-home-20.png")); // NOI18N
         Beranda.setText("Beranda");

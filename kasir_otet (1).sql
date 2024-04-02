@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 22 Mar 2024 pada 03.22
+-- Waktu pembuatan: 02 Apr 2024 pada 04.36
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.2.4
 
@@ -40,7 +40,13 @@ CREATE TABLE `detailpenjualan` (
 --
 
 INSERT INTO `detailpenjualan` (`DetailID`, `ProdukID`, `Harga`, `JumlahProduk`, `SubTotal`) VALUES
-('DIDP001', '8991389230220', 3000, 5, 15000);
+('DIDP001', '8991389230220', 3000, 5, 15000),
+('DIDP002', '8993988090069', 2500, 5, 12500),
+('DIDP003', '8993988090069', 2500, 5, 12500),
+('DIDP004', '8993988282044', 3000, 4, 12000),
+('DIDP005', '8993988282044', 3000, 5, 15000),
+('DIDP006', '8993988282044', 3000, 4, 12000),
+('DIDP007', '8993988282044', 3000, 3, 9000);
 
 -- --------------------------------------------------------
 
@@ -83,7 +89,8 @@ CREATE TABLE `pelanggan` (
 
 INSERT INTO `pelanggan` (`Pelanggan`, `NamaPelanggan`, `Alamat`, `NomorTelepon`) VALUES
 (2, 'As', 'AR', '09766'),
-(3, 'Lyra', 'Kp.', '087654');
+(3, 'Lyra', 'Kp.', '087654'),
+(4, 'ros', 'pel', '02164');
 
 -- --------------------------------------------------------
 
@@ -92,12 +99,24 @@ INSERT INTO `pelanggan` (`Pelanggan`, `NamaPelanggan`, `Alamat`, `NomorTelepon`)
 --
 
 CREATE TABLE `penjualan` (
-  `PenjualanID` int(11) NOT NULL,
-  `DetailID` int(11) NOT NULL,
+  `PenjualanID` varchar(15) NOT NULL,
+  `DetailID` varchar(15) NOT NULL,
   `TanggalPenjualan` date NOT NULL,
   `JamPenjualan` time NOT NULL,
   `TotalHarga` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `penjualan`
+--
+
+INSERT INTO `penjualan` (`PenjualanID`, `DetailID`, `TanggalPenjualan`, `JamPenjualan`, `TotalHarga`) VALUES
+('IDP001', 'DIDP001', '2024-04-01', '10:04:21', 15000),
+('IDP002', 'DIDP002', '2024-04-01', '10:07:00', 12500),
+('IDP003', 'DIDP003', '2024-04-02', '08:20:05', 12500),
+('IDP004', 'DIDP004', '2024-04-02', '08:52:59', 12000),
+('IDP005', 'DIDP005', '2024-04-02', '09:25:57', 15000),
+('IDP006', 'DIDP006', '2024-04-02', '09:27:31', 12000);
 
 -- --------------------------------------------------------
 
@@ -117,10 +136,10 @@ CREATE TABLE `produk` (
 --
 
 INSERT INTO `produk` (`ProdukID`, `NamaProduk`, `Harga`, `Stok`) VALUES
-('8991389230220', 'buku', 3000, 30),
-('8993988090069', 'penghapus', 2500, 30),
+('8991389230220', 'buku', 3000, 20),
+('8993988090069', 'penghapus', 2500, 20),
 ('8993988090243', 'Joyko', 2000, 0),
-('8993988282044', 'pulpen', 3000, 36);
+('8993988282044', 'pulpen', 3000, 20);
 
 --
 -- Indexes for dumped tables
